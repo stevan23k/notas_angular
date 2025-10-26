@@ -1,0 +1,30 @@
+<main>
+  <div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <h1>Register</h1>
+      @if (formError === true) {
+        <h1 class="errorMessage">{{ errorMessage }}</h1>
+      }
+      <label for="username"> Username </label>
+      <input class="inputs" formControlName="username" type="text" placeholder="Username" />
+      <label for="password"> Password </label>
+      <input class="inputs" formControlName="password" type="password" placeholder="Password" />
+
+      <div>
+        <p>
+          <input type="checkBox" [formControl]="aceptarTerminos" /> aceptar terminos y condiciones
+        </p>
+      </div>
+
+      <button
+        [disabled]="!aceptarTerminos.value"
+        [ngClass]="{ 'button-disabled': !aceptarTerminos.value }"
+        type="submit"
+      >
+        Register
+      </button>
+      <br />
+      <p>para iniciar sesión click <a routerLink="/login">aqui</a></p>
+    </form>
+  </div>
+</main>

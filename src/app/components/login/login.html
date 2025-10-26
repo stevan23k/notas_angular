@@ -1,0 +1,30 @@
+<div class="login-container">
+  <h1>iniciar sesión</h1>
+  <form (ngSubmit)="sendLogin()" [formGroup]="form">
+    @if (failLogin === true) {
+      <div class="errorLoginContainer">
+        <h4 class="errorLogin">usuario o contraseña incorrecto</h4>
+      </div>
+    }
+    <label for="username"> Username </label>
+    <input
+      class="inputs"
+      type="text"
+      formControlName="username"
+      name="username"
+      placeholder="Username"
+    />
+    <label for="password"> Password </label>
+    <input
+      class="inputs"
+      type="password"
+      formControlName="password"
+      name="password"
+      placeholder="Password"
+    />
+
+    <button type="submit">iniciar sesión</button>
+    <br />
+    <p>para registrarse haga click <a routerLink="/register"> aquí</a></p>
+  </form>
+</div>

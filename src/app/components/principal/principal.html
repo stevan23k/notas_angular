@@ -1,0 +1,31 @@
+<div class="main">
+  <div class="createLink">
+    <a routerLink="/create"><span class="material-symbols-outlined"> add </span></a>
+  </div>
+
+  <h2>Lista de Tareas</h2>
+  <div class="tareas-container">
+    <div class="tareas-list">
+      @if (tareas.length === 0) {
+        <div>No hay tareas disponibles.</div>
+      }
+      @for (tareas of tareas; track tareas.id) {
+        <div class="tarea-item">
+          <div class="tarea-header">
+            {{ tareas.nombre }}
+            {{ tareas.id }}
+            {{ tareas.UserID }}
+          </div>
+          <div class="tarea-descripcion">
+            {{ tareas.descripcion }}
+          </div>
+          <div class="tarea-footer">
+            <button>completar</button>
+            {{ tareas.estado }}
+            <button>eliminar</button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>
