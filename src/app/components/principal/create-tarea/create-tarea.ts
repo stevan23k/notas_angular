@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TareasService } from '../../../services/tareas/tareas';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Tarea } from '../../../services/tareas/tareas.model';
 import { EstadoTarea } from '../../../services/tareas/tareas.model';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-create-tarea',
-  imports: [RouterModule, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [RouterModule, CommonModule, FormsModule, ReactiveFormsModule, MatIconModule],
   templateUrl: './create-tarea.html',
   styleUrl: './create-tarea.css',
 })
@@ -18,7 +18,9 @@ export class CreateTarea {
     private tareasSvc: TareasService,
     private router: Router,
   ) {}
-  form = new FormGroup({
+  errorMessage: string = '';
+
+  createTareaForm = new FormGroup({
     nombre: new FormControl<string>('', { nonNullable: true }),
     descripcion: new FormControl<string>('', { nonNullable: true }),
     estado: new FormControl<EstadoTarea>(EstadoTarea.enProgreso, { nonNullable: true }),
@@ -26,9 +28,9 @@ export class CreateTarea {
 
   createTarea() {
     const newTarea = {
-      nombre: this.form.value.nombre ?? '',
-      descripcion: this.form.value.descripcion ?? '',
-      estado: this.form.value.estado ?? EstadoTarea.enProgreso,
+      nombre: this.createTareaForm.value.nombre ?? '',
+      descripcion: this.createTareaForm.value.descripcion ?? '',
+      estado: this.createTareaForm.value.estado ?? EstadoTarea.enProgreso,
     };
     this.tareasSvc.createTarea(newTarea).subscribe({
       next: (response) => {
@@ -42,6 +44,8 @@ export class CreateTarea {
           this.router.navigate(['/login']);
           alert('Debes iniciar sesión para crear una tarea');
         }
+        console.log(error);
+        this.errorMessage = 'la logitud de la descripcion deb superar los 15 carapteres';
       },
     });
   }

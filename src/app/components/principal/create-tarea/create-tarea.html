@@ -1,2 +1,29 @@
-<p>create-tarea works!</p>
-<a routerLink="/">inicio</a>
+<main>
+  <div class="back">
+    <a routerLink="/"
+      ><mat-icon aria-hidden="false" aria-label="arrow_back" fontIcon="arrow_back"></mat-icon>
+    </a>
+  </div>
+
+  <div class="container">
+    @if (errorMessage) {
+      {{ errorMessage }}
+    }
+    <h1>crear una nueva tarea</h1>
+    <form [formGroup]="createTareaForm">
+      <label for="nombre">nombre</label>
+      <input formControlName="nombre" type="text" name="" value="" />
+
+      <label for="descripcion">descripcion</label>
+      <textarea formControlName="descripcion" rows="" cols=""></textarea>
+
+      <label for="estado">estado inicial</label>
+      <select formControlName="estado">
+        <option value="completada">completada</option>
+        <option value="enProgreso">en progreso</option>
+        <option value="pendiente" selected>pendiente</option>
+      </select>
+      <button (click)="createTarea()">crear</button>
+    </form>
+  </div>
+</main>

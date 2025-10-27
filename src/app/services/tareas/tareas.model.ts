@@ -2,6 +2,7 @@ export enum EstadoTarea {
   completada = 'completada',
   enProgreso = 'en progreso',
   eliminada = 'eliminada',
+  pendiente = 'pendiente',
 }
 
 export interface Tarea {
@@ -10,6 +11,5 @@ export interface Tarea {
   descripcion: string;
   estado: EstadoTarea;
   UserID?: number;
-  deleted?: boolean;
   deletedAt?: Date;
 }
