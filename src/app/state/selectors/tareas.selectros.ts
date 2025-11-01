@@ -10,6 +10,8 @@ export const selectTareasList = createSelector(TareasFeature, (state: TareasStat
 export const selectLoading = createSelector(TareasFeature, (state: TareasState) => state.loading);
 export const selectFiltro = createSelector(TareasFeature, (state: TareasState) => state.filtro);
 
+export const selectUser = createSelector(TareasFeature, (state: TareasState) => state.user);
+
 export const selectTareasFiltradas = createSelector(
   selectTareasList,
   selectFiltro,

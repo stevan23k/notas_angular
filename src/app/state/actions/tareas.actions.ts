@@ -15,5 +15,7 @@ export const TareasActions = createActionGroup({
     'cambiar filtro': props<{ filtro: EstadoTarea }>(),
   },
 });
+export const LoadUser = createAction('[User] Load User');
+export const UserLoaded = createAction('[User] Loaded User', props<{ user: string }>());
 
 export const LoadTareas = createAction('[Tareas] Load Tareas');

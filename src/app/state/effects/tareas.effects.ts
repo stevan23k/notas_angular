@@ -4,12 +4,16 @@ import { EMPTY } from 'rxjs';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
 import { TareasService } from '../../services/tareas/tareas';
 import { create } from 'node:domain';
-import { LoadTareas, TareasActions } from '../actions/tareas.actions';
+import { LoadTareas, LoadUser, TareasActions, UserLoaded } from '../actions/tareas.actions';
+import { AuthService } from '../../services/auth/auth-service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class TareasEffects {
   private actions$ = inject(Actions);
   private tareasSvc = inject(TareasService);
+  private authService = inject(AuthService);
+  private Router = inject(Router);
 
   loadTareas$ = createEffect(() => {
     return this.actions$.pipe(
@@ -17,7 +21,12 @@ export class TareasEffects {
       exhaustMap(() =>
         this.tareasSvc.getAllTareas().pipe(
           map((response) => ({ type: '[Tareas] Loaded Tareas', tareas: response.body })),
-          catchError(() => EMPTY),
+          catchError((error) => {
+            if (error.status === 401) {
+              this.Router.navigate(['/login']);
+            }
+            return EMPTY;
+          }),
         ),
       ),
     );
@@ -33,7 +42,12 @@ export class TareasEffects {
             console.log(newTarea);
             return TareasActions.tareaChange({ tarea: newTarea! });
           }),
-          catchError((error) => EMPTY),
+          catchError((error) => {
+            if (error.status === 401) {
+              this.Router.navigate(['/login']);
+            }
+            return EMPTY;
+          }),
         ),
       ),
     ),
@@ -45,9 +59,30 @@ export class TareasEffects {
       exhaustMap(({ id }) =>
         this.tareasSvc.deleteTarea(id).pipe(
           map((response) => LoadTareas()),
-          catchError((error) => EMPTY),
+          catchError((error) => {
+            if (error.status === 401) {
+              this.Router.navigate(['/login']);
+            }
+            return EMPTY;
+          }),
         ),
       ),
     ),
   );
+  loadUser$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(LoadUser),
+      exhaustMap(() =>
+        this.authService.User().pipe(
+          map((response) => UserLoaded({ user: response.body?.nombre! })),
+          catchError((error) => {
+            if (error.status === 401) {
+              this.Router.navigate(['/login']);
+            }
+            return EMPTY;
+          }),
+        ),
+      ),
+    );
+  });
 }

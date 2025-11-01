@@ -3,15 +3,11 @@ import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LoadTareas, TareasActions } from '../../../state/actions/tareas.actions';
 import { Observable } from 'rxjs';
-import {
-  selectLoading,
-  selectTareasFiltradas,
-  selectTareasList,
-} from '../../../state/selectors/tareas.selectros';
+import { selectLoading, selectTareasFiltradas } from '../../../state/selectors/tareas.selectros';
 import { AppState } from '../../../state/app.state';
 import { AsyncPipe } from '@angular/common';
-import { EstadoTarea, Tarea } from '../../../services/tareas/tareas.model';
-import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Tarea } from '../../../services/tareas/tareas.model';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tareas',

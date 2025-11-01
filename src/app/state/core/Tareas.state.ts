@@ -3,4 +3,5 @@ export interface TareasState {
   loading: boolean;
   tareas: Tarea[];
   filtro: EstadoTarea;
+  user: string;
 }

@@ -1,13 +1,25 @@
 import { createReducer, on } from '@ngrx/store';
+import { LoadUser, UserLoaded } from '../actions/tareas.actions';
 
 import { LoadTareas, TareasActions } from '../actions/tareas.actions';
 import { EstadoTarea, Tarea } from '../../services/tareas/tareas.model';
 import { TareasState } from '../core/Tareas.state';
 
-export const initialState: TareasState = { loading: false, tareas: [], filtro: EstadoTarea.todas };
+export const initialState: TareasState = {
+  loading: false,
+  tareas: [],
+  filtro: EstadoTarea.todas,
+  user: '',
+};
 
 export const TareasReducer = createReducer(
   initialState,
+  on(LoadUser, (_state) => {
+    return { ..._state, loading: true };
+  }),
+  on(UserLoaded, (_state, { user }) => {
+    return { ..._state, user, loading: false };
+  }),
   on(TareasActions.cambiarFiltro, (_state, { filtro }) => ({
     ..._state,
     filtro,
