@@ -45,7 +45,7 @@ export class CreateTarea {
           alert('Debes iniciar sesión para crear una tarea');
         }
         console.log(error);
-        this.errorMessage = 'la logitud de la descripcion deb superar los 15 carapteres';
+        this.errorMessage = 'la logitud de la descripcion debe superar los 15 carapteres';
       },
     });
   }

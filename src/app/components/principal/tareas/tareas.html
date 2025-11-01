@@ -1,0 +1,34 @@
+<div>
+  @if (loading$ | async) {
+    <h1>loading...</h1>
+  }
+</div>
+@if ((tareas$ | async)?.length === 0) {
+  <h1>No tienes tareas con este estado</h1>
+} @else {
+  <main>
+    <div class="tareas-list">
+      @for (tareas of tareas$ | async; track tareas.id) {
+        <div class="tarea-item">
+          <div class="tarea-header">
+            {{ tareas.nombre }}
+          </div>
+          <div class="tarea-descripcion">{{ tareas.descripcion }}</div>
+          <div class="tarea-footer">
+            <select class="tarea-estado" #sel (change)="changeEstado(tareas.id!, sel.value)">
+              <option value="completada">completada</option>
+              <option value="en progreso">en progreso</option>
+              <option value="pendiente" selected>pendiente</option>
+            </select>
+            {{ tareas.estado }}
+            @if (tareas.estado !== 'eliminada') {
+              <button class="tarea-boton-eliminar" (click)="deleteTarea(tareas.id!)">
+                eliminar
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </main>
+}

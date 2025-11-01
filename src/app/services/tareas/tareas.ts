@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
-import { Tarea } from './tareas.model';
+import { EstadoTarea, Tarea } from './tareas.model';
 
 import { Observable } from 'rxjs';
 
@@ -8,36 +8,47 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TareasService {
-  private tareasUrl = 'http://localhost:3000/tareas';
+  private urlApi(parametro: any) {
+    if (parametro == null) {
+      return 'http://localhost:3000/tareas';
+    }
+    return `http://localhost:3000/tareas/${parametro}`;
+  }
   constructor(private http: HttpClient) {}
 
   getAllTareas(): Observable<HttpResponse<Tarea[]>> {
-    return this.http.get<Tarea[]>(this.tareasUrl, {
+    const url = this.urlApi(null);
+    return this.http.get<Tarea[]>(url, {
       observe: 'response',
       withCredentials: true,
     });
   }
 
   createTarea(tarea: Tarea): Observable<HttpResponse<Tarea>> {
-    return this.http.post<Tarea>(this.tareasUrl, tarea, {
+    const url = this.urlApi(null);
+    return this.http.post<Tarea>(url, tarea, {
       observe: 'response',
       withCredentials: true,
     });
   }
 
   deleteTarea(id: number): Observable<HttpResponse<Object>> {
-    const url = `http://localhost:3000/tareas/${id}`;
+    const url = this.urlApi(id);
     return this.http.delete(url, {
       observe: 'response',
       withCredentials: true,
     });
   }
 
-  completeTarea(id: number): Observable<HttpResponse<Object>> {
-    const url = `http://localhost:3000/tareas/complete/${id}`;
-    return this.http.get(url, {
-      observe: 'response',
-      withCredentials: true,
-    });
+  completeTarea(id: number, estado: string): Observable<HttpResponse<{ tarea: Tarea }>> {
+    const url = this.urlApi(`change/${id}`);
+    return this.http.put<{ tarea: Tarea }>(
+      url,
+      { estado },
+      {
+        observe: 'response',
+        withCredentials: true,
+      },
+    );
   }
 }

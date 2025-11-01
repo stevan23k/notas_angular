@@ -11,6 +11,14 @@
   cursor: pointer;
 }
 
+.filter button:hover {
+  background-color: #8abeb9;
+  transition: background-color 0.3s ease;
+}
+button.activo {
+  background-color: #b7e5cd;
+}
+
 .filters {
   display: flex;
   flex-direction: row;
@@ -65,7 +73,7 @@
 .createLink {
   height: 60px;
   width: 60px;
-  background-color: green;
+  background-color: #305669;
   display: sticky;
   position: fixed;
   right: 50px;
@@ -74,9 +82,10 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 .createLink:hover {
-  background-color: darkgreen;
+  background-color: #c1785a;
   cursor: pointer;
 }
 .createLink a {

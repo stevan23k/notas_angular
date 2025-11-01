@@ -7,40 +7,43 @@
 
   <div class="filters">
     <div class="filter">
-      <button (click)="changeFilter('todas')">ver todas</button>
-      <button (click)="changeFilter('completadas')">completadas</button>
-      <button (click)="changeFilter('pendientes')">pendientes</button>
-      <button (click)="changeFilter('en_progreso')">en progreso</button>
+      <button
+        [ngClass]="{ activo: (filtro$ | async) === 'todas' }"
+        (click)="cambiarFiltro(EstadoTarea.todas)"
+      >
+        ver todas
+      </button>
+      <button
+        [ngClass]="{ activo: (filtro$ | async) === 'completada' }"
+        (click)="cambiarFiltro(EstadoTarea.completada)"
+      >
+        completadas
+      </button>
+      <button
+        [ngClass]="{ activo: (filtro$ | async) === 'pendiente' }"
+        (click)="cambiarFiltro(EstadoTarea.pendiente)"
+      >
+        pendientes
+      </button>
+      <button
+        [ngClass]="{ activo: (filtro$ | async) === 'en progreso' }"
+        (click)="cambiarFiltro(EstadoTarea.enProgreso)"
+      >
+        en progreso
+      </button>
     </div>
     <div>
-      <button (click)="changeFilter('eliminadas')" class="delete">
+      <button
+        [ngClass]="{ activo: (filtro$ | async) === 'eliminada' }"
+        (click)="cambiarFiltro(EstadoTarea.eliminada)"
+        class="delete"
+      >
         <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete"></mat-icon>
       </button>
     </div>
   </div>
 
   <div class="tareas-container">
-    <div class="tareas-list">
-      @if (tareasVisibles().length === 0) {
-        <div>No hay tareas disponibles.</div>
-      }
-      @for (tareas of tareasVisibles(); track tareas.id) {
-        <div class="tarea-item">
-          <div class="tarea-header">
-            {{ tareas.nombre }}
-          </div>
-          <div class="tarea-descripcion">
-            {{ tareas.descripcion }}
-          </div>
-          <div class="tarea-footer">
-            <button (click)="completeTarea(tareas.id!)">completar</button>
-            {{ tareas.estado }}
-            @if (tareas.estado !== 'eliminada') {
-              <button (click)="deleteTarea(tareas.id!)">eliminar</button>
-            }
-          </div>
-        </div>
-      }
-    </div>
+    <app-tareas />
   </div>
 </div>

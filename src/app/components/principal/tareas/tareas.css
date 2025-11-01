@@ -1,0 +1,45 @@
+main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.tarea-boton-eliminar {
+  height: 30px;
+  width: 120px;
+  cursor: pointer;
+  background-color: #8abeb9;
+  border-radius: 20px;
+}
+
+.tarea-estado {
+  height: 30px;
+  border-radius: 20px;
+  padding: 5px;
+  justify-content: center;
+}
+.tareas-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #b7e5cd;
+  height: 100%;
+  width: 50%;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.tarea-item {
+  display: flex;
+  height: 150px;
+  width: 350px;
+  background-color: white;
+  border-radius: 20px;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}

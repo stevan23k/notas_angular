@@ -14,8 +14,11 @@
         "@angular/platform-server": "^20.3.0",
         "@angular/router": "^20.3.0",
         "@angular/ssr": "^20.3.4",
+        "@ngrx/effects": "^20.1.0",
         "@ngrx/store": "^20.1.0",
+        "@ngrx/store-devtools": "^20.1.0",
         "express": "^5.1.0",
+        "ngx-cookie-service": "^20.1.1",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.15.0",
@@ -306,7 +309,11 @@
 
     "@napi-rs/nice-win32-x64-msvc": ["@napi-rs/nice-win32-x64-msvc@1.1.1", "", { "os": "win32", "cpu": "x64" }, "sha512-vB+4G/jBQCAh0jelMTY3+kgFy00Hlx2f2/1zjMoH821IbplbWZOkLiTYXQkygNTzQJTq5cvwBDgn2ppHD+bglQ=="],
 
+    "@ngrx/effects": ["@ngrx/effects@20.1.0", "", { "dependencies": { "tslib": "^2.0.0" }, "peerDependencies": { "@angular/core": "^20.0.0", "@ngrx/store": "20.1.0", "rxjs": "^6.5.3 || ^7.5.0" } }, "sha512-wkIu0QnTarBd1zUswk643H5SILO9Be1OeswMe7g4tXlkNLFRPkyu0BUzXT80PsUPP5p0VrdFz3akrn3HHjjTjA=="],
+
     "@ngrx/store": ["@ngrx/store@20.1.0", "", { "dependencies": { "tslib": "^2.0.0" }, "peerDependencies": { "@angular/core": "^20.0.0", "rxjs": "^6.5.3 || ^7.5.0" } }, "sha512-o8j3CGAGedm+BIb+QDhNXrVaU//n9uF0wH0HZWtXHmW1mjRBaQiUA+ZPMUkDwAeN8KuOcoIEC+2QUXxXGVI7ow=="],
+
+    "@ngrx/store-devtools": ["@ngrx/store-devtools@20.1.0", "", { "dependencies": { "tslib": "^2.0.0" }, "peerDependencies": { "@angular/core": "^20.0.0", "@ngrx/store": "20.1.0", "rxjs": "^6.5.3 || ^7.5.0" } }, "sha512-4N6X/uAfjiCFcuauX2gG+6TnDAuixrfMfUVebLYvifLkrDmqDO8lbeH+Lhk3EVGnpUih4yJiCaU437awVyKckw=="],
 
     "@npmcli/agent": ["@npmcli/agent@3.0.0", "", { "dependencies": { "agent-base": "^7.1.0", "http-proxy-agent": "^7.0.0", "https-proxy-agent": "^7.0.1", "lru-cache": "^10.0.1", "socks-proxy-agent": "^8.0.3" } }, "sha512-S79NdEgDQd/NGCay6TCoVzXSj74skRZIKJcpJjC5lOq34SZzyI6MqtiiWoiVWoVrTcGjNeC4ipbh1VIHlpfF5Q=="],
 
@@ -857,6 +864,8 @@
     "nanoid": ["nanoid@3.3.11", "", { "bin": { "nanoid": "bin/nanoid.cjs" } }, "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w=="],
 
     "negotiator": ["negotiator@1.0.0", "", {}, "sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg=="],
+
+    "ngx-cookie-service": ["ngx-cookie-service@20.1.1", "", { "dependencies": { "tslib": "^2.8.0" }, "peerDependencies": { "@angular/common": "^20.0.0", "@angular/core": "^20.0.0" } }, "sha512-jGjjIqu+Kt8De6YjDqTQOaUHKB7gYs0eaDuLyXfNhfKnA78lA7D7oWcaIzjkmXhRqTnh2/ex1UHmZHN9MX0yoQ=="],
 
     "node-addon-api": ["node-addon-api@6.1.0", "", {}, "sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA=="],
 

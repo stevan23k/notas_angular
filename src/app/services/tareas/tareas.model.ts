@@ -3,6 +3,7 @@ export enum EstadoTarea {
   enProgreso = 'en progreso',
   eliminada = 'eliminada',
   pendiente = 'pendiente',
+  todas = 'todas',
 }
 
 export interface Tarea {
