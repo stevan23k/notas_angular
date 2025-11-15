@@ -2,9 +2,9 @@
   <h1>iniciar sesión</h1>
   <form (ngSubmit)="sendLogin()" [formGroup]="form">
     @if (failLogin === true) {
-      <div class="errorLoginContainer">
-        <h4 class="errorLogin">usuario o contraseña incorrecto</h4>
-      </div>
+    <div class="errorLoginContainer">
+      <h4 class="errorLogin">usuario o contraseña incorrecto</h4>
+    </div>
     }
     <label for="username"> Username </label>
     <input

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
 import { EstadoTarea, Tarea } from './tareas.model';
+import { environment } from '../../../environments/environment';
 
 import { Observable } from 'rxjs';
 
@@ -10,9 +11,9 @@ import { Observable } from 'rxjs';
 export class TareasService {
   private urlApi(parametro: any) {
     if (parametro == null) {
-      return 'http://localhost:3000/tareas';
+      return environment.API_URL + '/tareas';
     }
-    return `http://localhost:3000/tareas/${parametro}`;
+    return environment.API_URL + `/tareas/${parametro}`;
   }
   constructor(private http: HttpClient) {}
 

@@ -22,9 +22,6 @@ export class TareasEffects {
         this.tareasSvc.getAllTareas().pipe(
           map((response) => ({ type: '[Tareas] Loaded Tareas', tareas: response.body })),
           catchError((error) => {
-            if (error.status === 401) {
-              this.Router.navigate(['/login']);
-            }
             return EMPTY;
           }),
         ),
@@ -43,9 +40,6 @@ export class TareasEffects {
             return TareasActions.tareaChange({ tarea: newTarea! });
           }),
           catchError((error) => {
-            if (error.status === 401) {
-              this.Router.navigate(['/login']);
-            }
             return EMPTY;
           }),
         ),
@@ -60,9 +54,6 @@ export class TareasEffects {
         this.tareasSvc.deleteTarea(id).pipe(
           map((response) => LoadTareas()),
           catchError((error) => {
-            if (error.status === 401) {
-              this.Router.navigate(['/login']);
-            }
             return EMPTY;
           }),
         ),
@@ -76,9 +67,6 @@ export class TareasEffects {
         this.authService.User().pipe(
           map((response) => UserLoaded({ user: response.body?.nombre! })),
           catchError((error) => {
-            if (error.status === 401) {
-              this.Router.navigate(['/login']);
-            }
             return EMPTY;
           }),
         ),

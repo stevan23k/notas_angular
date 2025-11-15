@@ -3,6 +3,7 @@ import { Login } from './components/login/login';
 import { Register } from './components/register/register';
 import { Principal } from './components/principal/principal';
 import { CreateTarea } from './components/principal/create-tarea/create-tarea';
+import { authGuard } from './guard/auth-guard';
 
 export const routes: Routes = [
   {
@@ -14,10 +15,12 @@ export const routes: Routes = [
     component: Register,
   },
   {
+    canActivate: [authGuard],
     path: '',
     component: Principal,
   },
   {
+    canActivate: [authGuard],
     path: 'create',
     component: CreateTarea,
   },
